@@ -7,7 +7,7 @@ Languages: 한국어 · English · 日本語 · العربية · Español · Fr
 [한국어](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [العربية](README.ar.md) · [Español](README.es.md) · [Français](README.fr.md) · [हिन्दी](README.hi.md) · [Português (BR)](README.pt-BR.md) · [Русский](README.ru.md) · **简体中文**
 
 > 一款 macOS 应用,让你通过手机安全地控制运行在 Mac 上的 Claude Code(即将支持 Codex CLI、Gemini CLI)。
-> 基于 **Tor onion 服务** · **零外部服务器** · **零付费服务** · **100% OSS 组件**。
+> 基于 **Tor onion 服务** · **零外部服务器** · **零付费服务**。
 
 ## 📥 下载
 

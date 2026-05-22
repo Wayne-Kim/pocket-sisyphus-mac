@@ -7,7 +7,7 @@ Languages: 한국어 · English · 日本語 · العربية · Español · Fr
 [한국어](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [العربية](README.ar.md) · [Español](README.es.md) · [Français](README.fr.md) · **हिन्दी** · [Português (BR)](README.pt-BR.md) · [Русский](README.ru.md) · [简体中文](README.zh-Hans.md)
 
 > आपके Mac पर चल रहे Claude Code (Codex CLI, Gemini CLI जल्द आ रहे हैं) को फोन से सुरक्षित रूप से नियंत्रित करने वाला macOS ऐप।
-> **Tor onion service** आधारित · **शून्य बाहरी सर्वर** · **शून्य पेड सेवाएँ** · **100% OSS कंपोनेंट**।
+> **Tor onion service** आधारित · **शून्य बाहरी सर्वर** · **शून्य पेड सेवाएँ**।
 
 ## 📥 डाउनलोड
 
