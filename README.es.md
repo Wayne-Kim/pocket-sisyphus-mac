@@ -6,7 +6,7 @@ Languages: 한국어 · English · 日本語 · العربية · Español (defa
 
 [한국어](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [العربية](README.ar.md) · **Español** · [Français](README.fr.md) · [हिन्दी](README.hi.md) · [Português (BR)](README.pt-BR.md) · [Русский](README.ru.md) · [简体中文](README.zh-Hans.md)
 
-> Una app para macOS que te permite controlar de forma segura Claude Code corriendo en tu Mac desde tu teléfono.
+> Una app para macOS que te permite controlar de forma segura Claude Code (Codex CLI y Gemini CLI próximamente) corriendo en tu Mac desde tu teléfono.
 > Basada en **servicios onion de Tor** · **cero servidores** · **cero servicios de pago** · **componentes 100% OSS**.
 
 ## 📥 Descarga
