@@ -6,7 +6,7 @@ Languages: 한국어 · English · 日本語 · العربية · Español · Fr
 
 [한국어](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [العربية](README.ar.md) · [Español](README.es.md) · [Français](README.fr.md) · [हिन्दी](README.hi.md) · [Português (BR)](README.pt-BR.md) · **Русский** · [简体中文](README.zh-Hans.md)
 
-> Приложение для macOS, позволяющее безопасно управлять Claude Code (поддержка Codex CLI и Gemini CLI скоро) на вашем Mac с телефона.
+> Приложение для macOS, позволяющее безопасно управлять с телефона несколькими CLI кодинг-агентов (Claude Code, Google Antigravity и др.), работающими на вашем Mac.
 > На основе **onion-сервисов Tor** · **без внешних серверов** · **без платных сервисов**.
 
 ## 📥 Загрузка

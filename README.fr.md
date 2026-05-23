@@ -6,7 +6,7 @@ Languages: 한국어 · English · 日本語 · العربية · Español · Fr
 
 [한국어](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [العربية](README.ar.md) · [Español](README.es.md) · **Français** · [हिन्दी](README.hi.md) · [Português (BR)](README.pt-BR.md) · [Русский](README.ru.md) · [简体中文](README.zh-Hans.md)
 
-> Une app macOS qui permet de contrôler en toute sécurité Claude Code (Codex CLI et Gemini CLI bientôt disponibles) tournant sur votre Mac depuis votre téléphone.
+> Une app macOS qui permet de contrôler en toute sécurité plusieurs CLI d’agents de codage (Claude Code, Google Antigravity, etc.) tournant sur votre Mac depuis votre téléphone.
 > Propulsée par les **services onion Tor** · **zéro serveur** · **zéro service payant**.
 
 ## 📥 Téléchargement

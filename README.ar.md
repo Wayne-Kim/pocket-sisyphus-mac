@@ -8,7 +8,7 @@ Languages: 한국어 · English · 日本語 · العربية (default) · Espa
 
 [한국어](README.md) · [English](README.en.md) · [日本語](README.ja.md) · **العربية** · [Español](README.es.md) · [Français](README.fr.md) · [हिन्दी](README.hi.md) · [Português (BR)](README.pt-BR.md) · [Русский](README.ru.md) · [简体中文](README.zh-Hans.md)
 
-> تطبيق macOS يتيح لك التحكم بأمان في Claude Code (دعم Codex CLI و Gemini CLI قريبًا) العامل على جهاز Mac من هاتفك.
+> تطبيق macOS يتيح لك التحكم بأمان في عدّة أدوات وكلاء برمجة عبر سطر الأوامر (مثل Claude Code وGoogle Antigravity وغيرها) تعمل على جهاز Mac من هاتفك.
 > مبني على **خدمات Tor onion** · **بدون خوادم خارجية** · **بدون خدمات مدفوعة**.
 
 ## 📥 التنزيل

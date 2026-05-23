@@ -6,7 +6,7 @@ Languages: 한국어 · English · 日本語 (default) · العربية · Espa
 
 [한국어](README.md) · [English](README.en.md) · **日本語** · [العربية](README.ar.md) · [Español](README.es.md) · [Français](README.fr.md) · [हिन्दी](README.hi.md) · [Português (BR)](README.pt-BR.md) · [Русский](README.ru.md) · [简体中文](README.zh-Hans.md)
 
-> Mac 上で動いている Claude Code(Codex CLI、Gemini CLI 対応予定)を、スマホから安全に操作できる macOS アプリ。
+> Mac 上で動いている複数のコーディングエージェント CLI(Claude Code、Google Antigravity ほか）を、スマホから安全に操作できる macOS アプリ。
 > **Tor onion service** ベース・**外部サーバー 0**・**有料サービス 0**。
 
 ## 📥 ダウンロード
