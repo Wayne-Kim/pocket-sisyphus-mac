@@ -7,7 +7,7 @@ Languages: 한국어 · English (default) · 日本語 · العربية · Espa
 [한국어](README.md) · **English** · [日本語](README.ja.md) · [العربية](README.ar.md) · [Español](README.es.md) · [Français](README.fr.md) · [हिन्दी](README.hi.md) · [Português (BR)](README.pt-BR.md) · [Русский](README.ru.md) · [简体中文](README.zh-Hans.md)
 
 > A macOS app that lets you safely control multiple coding-agent CLIs (Claude Code, Google Antigravity, and more) running on your Mac from your phone.
-> Powered by **Tor onion services** · **zero servers** · **zero paid services**.
+> Powered by **Tor onion services** · **zero servers**.
 
 ## 📥 Download
 
