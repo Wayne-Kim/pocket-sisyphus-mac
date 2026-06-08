@@ -28,7 +28,17 @@ DMG는 Apple Developer ID로 서명되어 있고 Apple notarization을 통과했
 | 디스크 | 약 400 MB (임베드된 Node.js + Tor 포함) |
 | 네트워크 | 일반 인터넷 연결 (방화벽/공유기 설정 불필요) |
 
-## 🚀 설치
+## ⚡️ 한 줄 설치 (권장)
+
+터미널에 아래 한 줄을 붙여넣으면 최신 버전이 자동으로 `/Applications`에 설치되고 실행됩니다 — 사전 의존성 0 (macOS 기본 탑재 `curl`만 필요):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/install.sh | bash
+```
+
+스크립트는 최신 release의 `appcast.xml`에서 DMG 직링크를 읽어 → 다운로드 → 마운트 → `.app`을 `/Applications`로 복사 → 실행까지 자동으로 처리합니다. DMG는 notarize + staple 완료본이라 Gatekeeper 경고가 없습니다. `curl | bash`가 미덥지 않으면 [install.sh](install.sh)를 먼저 읽어보세요.
+
+## 🚀 수동 설치
 
 1. `PocketSisyphusMac-v*.dmg` 더블클릭.
 2. 열린 창에서 `Pocket Sisyphus.app`을 **Applications** 폴더로 드래그.

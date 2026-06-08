@@ -28,7 +28,17 @@ O DMG é assinado com um Apple Developer ID e notarizado pela Apple — o Gateke
 | Disco | ~400 MB (Node.js + Tor inclusos) |
 | Rede | Qualquer conexão de internet (sem configuração de firewall/roteador) |
 
-## 🚀 Instalação
+## ⚡️ Instalação em uma linha (recomendado)
+
+Cole isto no Terminal e a versão mais recente é instalada em `/Applications` e iniciada automaticamente — zero pré-requisitos (apenas o `curl` que já vem no macOS):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/install.sh | bash
+```
+
+O script lê o link direto do DMG no `appcast.xml` da release mais recente, então baixa → monta → copia `.app` para `/Applications` → inicia. O DMG é notarizado + stapled, então o Gatekeeper não avisa. Receoso com `curl | bash`? Leia o [install.sh](install.sh) antes.
+
+## 🚀 Instalação manual
 
 1. Dê duplo clique em `PocketSisyphusMac-v*.dmg`.
 2. Arraste **Pocket Sisyphus.app** para a pasta **Aplicativos**.

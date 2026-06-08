@@ -28,7 +28,17 @@ DMG 已使用 Apple Developer ID 签名并通过 Apple 公证 (notarization) —
 | 磁盘 | 约 400 MB(含内置的 Node.js + Tor) |
 | 网络 | 任何互联网连接(无需配置防火墙/路由器) |
 
-## 🚀 安装
+## ⚡️ 一行命令安装(推荐)
+
+在终端粘贴下面这行,最新版本会自动安装到 `/Applications` 并启动 — 零依赖(只需 macOS 自带的 `curl`):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/install.sh | bash
+```
+
+脚本会从最新 release 的 `appcast.xml` 读取 DMG 直链,然后下载 → 挂载 → 把 `.app` 复制到 `/Applications` → 启动。DMG 已 notarize + staple,Gatekeeper 不会报警。担心 `curl | bash`?可以先阅读 [install.sh](install.sh)。
+
+## 🚀 手动安装
 
 1. 双击 `PocketSisyphusMac-v*.dmg`。
 2. 将 **Pocket Sisyphus.app** 拖入 **应用程序** 文件夹。

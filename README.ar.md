@@ -30,7 +30,17 @@ PocketSisyphusMac-v<الإصدار>-build<الرقم>.dmg
 | القرص | حوالي 400 ميغابايت (يشمل Node.js و Tor المضمّنين) |
 | الشبكة | أي اتصال إنترنت (لا يتطلب إعداد جدار حماية/راوتر) |
 
-## 🚀 التثبيت
+## ⚡️ التثبيت بأمر واحد (موصى به)
+
+الصق السطر التالي في الـ Terminal فيُثبَّت أحدث إصدار تلقائيًا في `/Applications` ويعمل — بدون أي متطلبات مسبقة (يكفي `curl` المُضمَّن في macOS):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/install.sh | bash
+```
+
+يقرأ السكربت الرابط المباشر لملف DMG من `appcast.xml` الخاص بأحدث إصدار، ثم يُنزّله ← يُركّبه ← ينسخ `.app` إلى `/Applications` ← يشغّله. ملف DMG موثَّق (notarize + staple) لذا لا يظهر تحذير Gatekeeper. إذا كنت متردّدًا تجاه `curl | bash` فاقرأ [install.sh](install.sh) أولًا.
+
+## 🚀 التثبيت اليدوي
 
 1. انقر نقرًا مزدوجًا على `PocketSisyphusMac-v*.dmg`.
 2. اسحب **Pocket Sisyphus.app** إلى مجلد **التطبيقات**.

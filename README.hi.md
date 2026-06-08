@@ -28,7 +28,17 @@ DMG Apple Developer ID से साइन किया गया है और 
 | डिस्क | लगभग 400 MB (Node.js + Tor बंडल सहित) |
 | नेटवर्क | कोई भी इंटरनेट कनेक्शन (firewall/router सेटअप की आवश्यकता नहीं) |
 
-## 🚀 इंस्टॉल
+## ⚡️ एक-लाइन इंस्टॉल (अनुशंसित)
+
+टर्मिनल में यह एक लाइन पेस्ट करें और नवीनतम संस्करण अपने-आप `/Applications` में इंस्टॉल होकर लॉन्च हो जाएगा — शून्य पूर्व-आवश्यकताएँ (बस macOS में मौजूद `curl`):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/install.sh | bash
+```
+
+स्क्रिप्ट नवीनतम release के `appcast.xml` से DMG का सीधा लिंक पढ़ती है, फिर डाउनलोड → माउंट → `.app` को `/Applications` में कॉपी → लॉन्च करती है। DMG notarize + staple किया हुआ है, इसलिए Gatekeeper चेतावनी नहीं देता। `curl | bash` पर भरोसा नहीं? पहले [install.sh](install.sh) पढ़ें।
+
+## 🚀 मैन्युअल इंस्टॉल
 
 1. `PocketSisyphusMac-v*.dmg` पर डबल-क्लिक करें।
 2. **Pocket Sisyphus.app** को **Applications** फ़ोल्डर में ड्रैग करें।
