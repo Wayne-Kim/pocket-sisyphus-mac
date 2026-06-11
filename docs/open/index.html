@@ -47,33 +47,47 @@
 <body>
   <main>
     <h1>Pocket Sisyphus</h1>
-    <p id="status">Opening the session in the app…</p>
-    <a id="open" class="btn" href="#">Open session</a>
+    <p id="status">Opening in the app…</p>
+    <a id="open" class="btn" href="#">Open in app</a>
     <p class="hint">If nothing happens, make sure the Pocket Sisyphus app is installed, then tap the button above.</p>
   </main>
   <script>
     (function () {
-      // Session id from the fragment (preferred — never leaves the browser) or ?s=.
-      function readId() {
+      // Target from the fragment (preferred — never leaves the browser) or ?s=.
+      // Two shapes:
+      //   "<id>"            → pocketsisyphus://session/<id>   (legacy bare session id)
+      //   "<route>[/<id>]"  → pocketsisyphus://<route>[/<id>] (route-prefixed, e.g.
+      //                       "backlog" / "backlog/<briefId>" for PO brief alerts)
+      function readFragment() {
         var h = (location.hash || "").replace(/^#/, "");
         if (h) return h;
         var m = location.search.match(/[?&]s=([^&]+)/);
         return m ? decodeURIComponent(m[1]) : "";
       }
-      // Session ids are UUID-ish; allow only safe chars to block scheme/URL injection.
-      var raw = readId();
-      var id = (raw.match(/[A-Za-z0-9._-]+/) || [""])[0];
+      // Ids are UUID-ish; allow only safe chars (plus one path separator) to block
+      // scheme/URL injection. Routes are whitelisted — unknown first segments are
+      // treated as a bare session id (back-compat with old daemons).
+      var raw = readFragment();
+      var m = raw.match(/^([A-Za-z0-9._-]+)(?:\/([A-Za-z0-9._-]+))?/) || [];
+      var first = m[1] || "";
+      var second = m[2] || "";
 
       var statusEl = document.getElementById("status");
       var openEl = document.getElementById("open");
 
-      if (!id) {
+      if (!first) {
         statusEl.textContent = "No session specified.";
         openEl.style.display = "none";
         return;
       }
 
-      var target = "pocketsisyphus://session/" + encodeURIComponent(id);
+      var ROUTES = { session: 1, backlog: 1 };
+      var target;
+      if (ROUTES[first]) {
+        target = "pocketsisyphus://" + first + (second ? "/" + encodeURIComponent(second) : "");
+      } else {
+        target = "pocketsisyphus://session/" + encodeURIComponent(first);
+      }
       openEl.setAttribute("href", target);
 
       // Auto-hand off to the app. If it isn't installed the navigation fails
