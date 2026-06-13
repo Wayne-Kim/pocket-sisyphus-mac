@@ -1,0 +1,70 @@
+# web/ 소개 사이트를 GitHub Pages 로 정적 배포한다.
+# - 프로젝트 페이지라 https://<owner>.github.io/<repo>/ 하위경로로 서빙된다
+#   → basePath 를 리포 이름으로 주입(NEXT_PUBLIC_BASE_PATH). 커스텀 도메인으로 옮기면
+#     repo Settings 의 도메인 + 아래 두 env 만 비우면 된다.
+# - 최초 1회: 리포 Settings → Pages → Build and deployment → Source = "GitHub Actions" 로 설정.
+name: Deploy web to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "web/**"
+      - ".github/workflows/deploy-web.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 동시 배포 1개로 제한(중복 실행 시 진행 중인 것 유지하고 대기열 정리)
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: web/pnpm-lock.yaml
+
+      - name: Resolve Pages base path
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build static export
+        env:
+          # 프로젝트 페이지 하위경로(/<repo>) 와 origin 을 주입 — OG 절대 URL·자산 경로가 맞춰진다.
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.origin }}
+        run: pnpm build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
