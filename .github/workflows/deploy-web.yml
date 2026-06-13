@@ -58,7 +58,7 @@ jobs:
       # .nojekyll 보장 — 없으면 Pages 가 Jekyll 로 처리해 «_next» (밑줄 디렉터리)를 통째로
       # 떨궈 모든 자산이 404 난다. public 의 dotfile 이 아티팩트에 안 실리는 경우가 있어 여기서 강제 생성.
       - name: Disable Jekyll
-        run: touch web/out/.nojekyll
+        run: touch out/.nojekyll # working-directory 가 web 이라 web/out 아님
 
       - uses: actions/upload-pages-artifact@v3
         with:
