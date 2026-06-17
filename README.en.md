@@ -48,10 +48,12 @@ The script reads the direct DMG link from the latest release's `appcast.xml`, th
 
 ## 📱 First Launch — Pair Your Phone
 
-1. On first launch, the daemon spins up a Tor onion service automatically (`xxxxx.onion`).
-2. Menu bar icon → **Show Pairing QR**.
-3. Scan the QR in the iOS **Pocket Sisyphus** app (TestFlight).
-4. Your phone can now reach the Mac over Tor from any LTE/5G/Wi-Fi network.
+1. (Mac) On first launch, the daemon spins up a Tor onion service automatically (`xxxxx.onion`).
+2. (Mac) Menu bar icon → **Show Pairing QR**.
+3. (Phone) On first launch, the iOS **Pocket Sisyphus** app asks you to choose a **connection mode** — “Anywhere (Tor)” or “Same Wi-Fi only”.
+4. (Phone) Scan the QR to pair.
+   - **Anywhere** — your phone connects to the Mac through the Tor network from anywhere (LTE/5G/Wi-Fi).
+   - **Same Wi-Fi only** — connects directly via a private address only when your phone and Mac are on the same Wi-Fi (faster), and blocks connections on outside networks.
 
 Once paired, you can chat, approve diffs, and review file changes from your phone.
 
@@ -61,6 +63,7 @@ Once paired, you can chat, approve diffs, and review file changes from your phon
 - **NAT/CGNAT-proof** — both ends connect outbound to Tor; no port forwarding needed.
 - **Double auth** — `.onion` address (Ed25519 key) + bearer token.
 - **Daemon binds 127.0.0.1 only** — not reachable directly; only the Tor onion is the entry point.
+- **Same-Wi-Fi-only mode (optional)** — when on, connects only via a private address on the same Wi-Fi and blocks Tor, public IP, and all outside outbound (fail-closed). Use it when you need a guarantee that no packet leaves your local network.
 
 ## 🧯 Troubleshooting
 
@@ -74,7 +77,7 @@ Once paired, you can chat, approve diffs, and review file changes from your phon
 → Some corporate/campus networks block Tor. Try a personal hotspot.
 
 **Pairing fails**
-→ Your phone and Mac don't need to be on the same Wi-Fi. LTE/5G on the phone is fine. But the iOS **Pocket Sisyphus.app** must have finished its Tor bootstrap (progress shown in-app).
+→ In “Anywhere (Tor)” mode, your phone and Mac don't need to be on the same Wi-Fi (LTE/5G is fine) as long as the iOS **Pocket Sisyphus.app** has finished its Tor bootstrap (progress shown in-app). In “Same Wi-Fi only” mode, the phone and Mac MUST be on the same Wi-Fi.
 
 **More info**
 → Build notes on each [release](../../releases).

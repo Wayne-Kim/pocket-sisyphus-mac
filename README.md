@@ -48,10 +48,12 @@ curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/
 
 ## 📱 첫 실행 — 폰과 페어링
 
-1. 첫 실행 시 daemon이 Tor onion service를 자동으로 만듭니다 (`xxxxx.onion`).
-2. 메뉴바 아이콘 → **Show Pairing QR**.
-3. iOS의 **Pocket Sisyphus** 앱(TestFlight)에서 QR을 스캔.
-4. 폰이 LTE/5G/와이파이 어디서든 Tor 네트워크를 통해 맥에 연결됩니다.
+1. (Mac) 첫 실행 시 daemon이 Tor onion service를 자동으로 만듭니다 (`xxxxx.onion`).
+2. (Mac) 메뉴바 아이콘 → **Show Pairing QR**.
+3. (폰) iOS의 **Pocket Sisyphus** 앱 첫 실행 시 **연결 방식**을 고릅니다 — 「어디서나(Tor)」 또는 「같은 Wi‑Fi 전용」.
+4. (폰) QR을 스캔하면 페어링됩니다.
+   - **어디서나** — 폰이 LTE/5G/와이파이 어디서든 Tor 네트워크를 통해 맥에 연결됩니다.
+   - **같은 Wi‑Fi 전용** — 폰과 맥이 같은 와이파이일 때만 사설 주소로 직접 연결(더 빠름)하고, 외부 네트워크에선 연결을 차단합니다.
 
 페어링이 끝나면 폰에서 채팅, Approval, 파일 변경 검토를 할 수 있습니다.
 
@@ -61,6 +63,7 @@ curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/
 - **NAT/CGNAT 무관** — 양쪽 모두 outbound로 Tor에 접속, 공유기 포워딩 불필요.
 - **2중 인증** — `.onion` 주소(Ed25519 키) + Bearer 토큰.
 - **daemon은 127.0.0.1 only** — 외부에서 직접 접근 불가, Tor onion만 진입로.
+- **같은 Wi‑Fi 전용 모드(선택)** — 켜면 같은 와이파이의 사설 주소로만 직접 연결하고 Tor·공인 IP·외부 outbound를 모두 차단합니다(fail-closed). 회사 밖으로 패킷이 안 나가는 보증이 필요할 때.
 
 ## 🧯 트러블슈팅
 
@@ -74,7 +77,7 @@ curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/
 → 일부 회사/학교 네트워크는 Tor를 차단합니다. 다른 네트워크(개인 핫스팟 등)에서 시도하세요.
 
 **페어링이 안 돼요**
-→ 폰과 맥이 같은 Wi-Fi일 필요는 없습니다. 폰의 LTE/5G도 OK. 다만 폰의 **Pocket Sisyphus.app**이 Tor 부팅을 끝낸 상태여야 합니다 (앱 안에 진행률 표시).
+→ 「어디서나(Tor)」 모드에선 폰과 맥이 같은 Wi-Fi일 필요가 없습니다(LTE/5G도 OK). 다만 폰의 **Pocket Sisyphus.app**이 Tor 부팅을 끝낸 상태여야 합니다 (앱 안에 진행률 표시). 「같은 Wi‑Fi 전용」 모드라면 폰과 맥이 반드시 같은 와이파이에 있어야 합니다.
 
 **더 많은 정보**
 → [Releases 페이지](../../releases)의 각 빌드 노트.

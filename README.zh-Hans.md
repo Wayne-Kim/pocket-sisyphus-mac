@@ -48,10 +48,12 @@ curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/
 
 ## 📱 首次启动 — 配对手机
 
-1. 首次启动时,daemon 会自动创建一个 Tor onion 服务(`xxxxx.onion`)。
-2. 菜单栏图标 → **Show Pairing QR**。
-3. 用 iOS 上的 **Pocket Sisyphus** App(TestFlight)扫描 QR 码。
-4. 现在手机可以通过 Tor 从任何 LTE/5G/Wi-Fi 网络访问 Mac。
+1. (Mac) 首次启动时,daemon 会自动创建一个 Tor onion 服务(`xxxxx.onion`)。
+2. (Mac) 菜单栏图标 → **Show Pairing QR**。
+3. (手机) iOS 上的 **Pocket Sisyphus** App 首次启动时会让你选择**连接模式** — “随处连接 (Tor)”或“仅同一 Wi-Fi”。
+4. (手机) 扫描 QR 码即可配对。
+   - **随处连接** — 手机可从任何地方(LTE/5G/Wi-Fi)通过 Tor 网络连接到 Mac。
+   - **仅同一 Wi-Fi** — 只有当手机和 Mac 在同一 Wi-Fi 时,才通过私有地址直接连接(更快),并在外部网络上阻止连接。
 
 配对完成后即可在手机上聊天、批准更改(Approval)、查看文件 diff。
 
@@ -61,6 +63,7 @@ curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/
 - **不受 NAT/CGNAT 影响** — 两端都是出站连接到 Tor,无需端口转发。
 - **双重认证** — `.onion` 地址(Ed25519 密钥) + Bearer 令牌。
 - **daemon 仅绑定 127.0.0.1** — 不可直接访问,唯一入口是 Tor onion。
+- **仅同一 Wi-Fi 模式(可选)** — 开启后,只通过同一 Wi-Fi 上的私有地址连接,并阻止 Tor、公网 IP 和所有外部出站流量(fail-closed)。适用于需要保证没有任何数据包离开本地网络的场景。
 
 ## 🧯 故障排查
 
@@ -74,7 +77,7 @@ curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/
 → 部分企业/校园网络会屏蔽 Tor。请尝试个人热点。
 
 **配对失败**
-→ 手机和 Mac 不需要在同一 Wi-Fi。手机用 LTE/5G 也可以,但 iOS 上的 **Pocket Sisyphus.app** 必须完成 Tor 启动(应用内可见进度)。
+→ 在“随处连接 (Tor)”模式下,手机和 Mac 不需要在同一 Wi-Fi(LTE/5G 也可以),只要 iOS 上的 **Pocket Sisyphus.app** 已完成 Tor 启动(应用内可见进度)。在“仅同一 Wi-Fi”模式下,手机和 Mac 必须在同一 Wi-Fi。
 
 **更多信息**
 → 查看各 [release](../../releases) 的发布说明。

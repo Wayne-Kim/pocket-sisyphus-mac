@@ -48,10 +48,12 @@ El script lee el enlace directo al DMG desde el `appcast.xml` de la última rele
 
 ## 📱 Primer arranque — Emparejar el teléfono
 
-1. En el primer arranque, el daemon crea automáticamente un servicio onion de Tor (`xxxxx.onion`).
-2. Icono de la barra de menú → **Show Pairing QR**.
-3. Escanea el QR con la app iOS **Pocket Sisyphus** (TestFlight).
-4. Tu teléfono ya puede llegar al Mac vía Tor desde cualquier red LTE/5G/Wi-Fi.
+1. (Mac) En el primer arranque, el daemon crea automáticamente un servicio onion de Tor (`xxxxx.onion`).
+2. (Mac) Icono de la barra de menú → **Show Pairing QR**.
+3. (Teléfono) En el primer arranque, la app iOS **Pocket Sisyphus** te pide elegir un **modo de conexión** — «Desde cualquier lugar (Tor)» o «Solo la misma Wi-Fi».
+4. (Teléfono) Escanea el QR para emparejar.
+   - **Desde cualquier lugar** — el teléfono se conecta al Mac a través de la red Tor desde cualquier lugar (LTE/5G/Wi-Fi).
+   - **Solo la misma Wi-Fi** — se conecta directamente mediante una dirección privada solo cuando el teléfono y el Mac están en la misma Wi-Fi (más rápido), y bloquea la conexión en redes externas.
 
 Una vez emparejados, puedes chatear, aprobar cambios (Approval) y revisar diffs de archivos desde el teléfono.
 
@@ -61,6 +63,7 @@ Una vez emparejados, puedes chatear, aprobar cambios (Approval) y revisar diffs 
 - **Funciona detrás de NAT/CGNAT** — ambos extremos conectan salientes (outbound) a Tor, sin port-forwarding.
 - **Doble autenticación** — dirección `.onion` (clave Ed25519) + token Bearer.
 - **El daemon escucha solo en 127.0.0.1** — no es accesible directamente, solo a través del onion de Tor.
+- **Modo solo la misma Wi-Fi (opcional)** — al activarlo, se conecta únicamente mediante una dirección privada en la misma Wi-Fi y bloquea Tor, IP públicas y todo tráfico saliente externo (fail-closed). Para cuando necesitas garantizar que ningún paquete salga de tu red local.
 
 ## 🧯 Solución de problemas
 
@@ -74,7 +77,7 @@ Una vez emparejados, puedes chatear, aprobar cambios (Approval) y revisar diffs 
 → Algunas redes corporativas/universitarias bloquean Tor. Prueba con un hotspot personal.
 
 **El emparejamiento falla**
-→ El teléfono y el Mac no necesitan estar en la misma Wi-Fi. LTE/5G del teléfono está bien. Pero la app iOS **Pocket Sisyphus.app** debe haber completado el arranque de Tor (progreso visible en la app).
+→ En el modo «Desde cualquier lugar (Tor)», el teléfono y el Mac no necesitan estar en la misma Wi-Fi (LTE/5G está bien), siempre que la app iOS **Pocket Sisyphus.app** haya completado el arranque de Tor (progreso visible en la app). En el modo «Solo la misma Wi-Fi», el teléfono y el Mac DEBEN estar en la misma Wi-Fi.
 
 **Más información**
 → Notas de cada [release](../../releases).

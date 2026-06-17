@@ -48,10 +48,12 @@ curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/
 
 ## 📱 初回起動 — スマホとペアリング
 
-1. 初回起動時、daemon が自動的に Tor の onion service を作成します(`xxxxx.onion`)。
-2. メニューバーアイコン → **Show Pairing QR**。
-3. iOS の **Pocket Sisyphus** アプリ(TestFlight)で QR をスキャン。
-4. これでスマホは LTE/5G/Wi-Fi のどこからでも Tor 経由で Mac に接続できます。
+1. (Mac) 初回起動時、daemon が自動的に Tor の onion service を作成します(`xxxxx.onion`)。
+2. (Mac) メニューバーアイコン → **Show Pairing QR**。
+3. (スマホ) iOS の **Pocket Sisyphus** アプリを初めて起動すると、**接続モード**を選びます — 「どこからでも(Tor)」または「同じ Wi-Fi のみ」。
+4. (スマホ) QR をスキャンするとペアリングされます。
+   - **どこからでも** — スマホが LTE/5G/Wi-Fi のどこからでも Tor ネットワーク経由で Mac に接続します。
+   - **同じ Wi-Fi のみ** — スマホと Mac が同じ Wi-Fi にある場合だけプライベートアドレスで直接接続し(より高速)、外部ネットワークでは接続をブロックします。
 
 ペアリングが終わると、スマホからチャット、Approval、ファイル変更レビューが可能になります。
 
@@ -61,6 +63,7 @@ curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/
 - **NAT/CGNAT 不問** — 両端とも outbound で Tor に接続するため、ポート転送不要。
 - **二重認証** — `.onion` アドレス(Ed25519 鍵) + Bearer トークン。
 - **daemon は 127.0.0.1 のみバインド** — 直接アクセス不可、Tor onion のみが入口。
+- **同じ Wi-Fi のみモード(任意)** — オンにすると、同じ Wi-Fi 上のプライベートアドレスでのみ接続し、Tor・パブリック IP・外部への outbound をすべてブロックします(fail-closed)。ローカルネットワークの外へパケットを一切出さない保証が必要なときに。
 
 ## 🧯 トラブルシューティング
 
@@ -74,7 +77,7 @@ curl -fsSL https://raw.githubusercontent.com/Wayne-Kim/pocket-sisyphus-mac/main/
 → 一部の企業/学校ネットワークは Tor をブロックしています。個人のホットスポットなど別の回線で試してください。
 
 **ペアリングに失敗する**
-→ スマホと Mac は同じ Wi-Fi である必要はありません。スマホ側の LTE/5G でも OK。ただしスマホの **Pocket Sisyphus.app** が Tor の起動を完了している必要があります(アプリ内に進行状況が表示されます)。
+→ 「どこからでも(Tor)」モードでは、スマホと Mac が同じ Wi-Fi である必要はありません(LTE/5G でも OK)。ただしスマホの **Pocket Sisyphus.app** が Tor の起動を完了している必要があります(アプリ内に進行状況が表示されます)。「同じ Wi-Fi のみ」モードでは、スマホと Mac が必ず同じ Wi-Fi 上にある必要があります。
 
 **さらに詳しく**
 → 各ビルドの [Release ノート](../../releases)。
