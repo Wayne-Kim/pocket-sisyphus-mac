@@ -27,7 +27,7 @@ export const site = {
   meta: {
     title: "Pocket Sisyphus — coding agents in your pocket",
     description:
-      "Drive Claude Code, Codex & Antigravity running on your Mac — securely, from your iPhone. Dual-channel SSH-first with Tor fallback. The app keeps zero servers of its own.",
+      "Drive Claude Code, Codex, Antigravity & Copilot running on your Mac — securely, from your iPhone. Dual-channel SSH-first with Tor fallback, or a private same-Wi-Fi-only mode. The app keeps zero servers of its own.",
     url: "https://pocketsisyphus.app",
   },
 
@@ -39,11 +39,11 @@ export const site = {
   hero: {
     title: "Your coding agents, in your pocket",
     tagline:
-      "Drive Claude Code, Codex & Antigravity on your Mac — securely, from your phone.",
+      "Drive Claude Code, Codex, Antigravity & Copilot on your Mac — securely, from your phone.",
     // 1차 = App Store 다운로드(외부), 2차 = 페어가 되는 Mac 앱 설치 허브(앵커).
     primaryCta: { label: "Download on the App Store", href: URLS.appStore },
     secondaryCta: { label: "Get the Mac app", href: "#install" },
-    pills: ["In your pocket", "Anywhere, anytime", "Never blocked", "Free to start"],
+    pills: ["In your pocket", "Anywhere, anytime", "Paired devices only", "Never blocked", "Free to start"],
   },
 
   /** 앱(iOS+Mac)의 핵심 원칙 — 웹사이트가 아니라 앱의 성질임을 분명히. */
@@ -73,14 +73,19 @@ export const site = {
         body: "Behind CGNAT or a locked-down router, the app falls back to a Tor hidden service automatically — nothing to set up.",
       },
       {
+        id: "lan-only",
+        title: "Same-Wi-Fi-only mode",
+        body: "Prefer to never leave your network? Flip on LAN-only mode and the app reaches your Mac only over your local Wi-Fi via a private address — no Tor, no public IP, no outside hop. Choose it on first launch; off-network it fails closed, so nothing leaves your LAN.",
+      },
+      {
         id: "crypto-identity",
         title: "Cryptographic identity, twice",
         body: "An .onion v3 address (Ed25519) plus the SSH host-key fingerprint, both pinned in the pairing QR.",
       },
       {
-        id: "no-vpn",
-        title: "No VPN entitlement",
-        body: "No NEPacketTunnelProvider, so it never trips Apple Guideline 5.4. Tor is embedded in-process.",
+        id: "paired-only",
+        title: "Only your paired devices get in",
+        body: "Pairing mints a unique SSH key — added to your Mac's allow-list — plus a per-device token, handed over once by QR. No passwords, no door left open to anyone else. Lost your phone? Rotate in a tap and the old device is locked out instantly.",
       },
     ],
   },
@@ -93,6 +98,7 @@ export const site = {
       { id: "claude-code", name: "Claude Code", vendor: "Anthropic" },
       { id: "antigravity", name: "Google Antigravity", vendor: "Google · agy" },
       { id: "codex", name: "OpenAI Codex", vendor: "OpenAI" },
+      { id: "copilot", name: "GitHub Copilot CLI", vendor: "GitHub" },
       { id: "terminal", name: "Terminal", vendor: "Built-in shell · Pro" },
       { id: "local-llm", name: "Local LLM", vendor: "On-device · Pro" },
     ],
@@ -117,7 +123,7 @@ export const site = {
         "tor hidden service (SSH-over-Tor)",
         "embedded sshd (direct-tcpip)",
         "daemon (Node + Hono + WS) → PTY",
-        "spawns claude / agy / codex / shell / local LLM",
+        "spawns claude / agy / codex / copilot / shell / local LLM",
       ],
     },
   },
@@ -182,7 +188,7 @@ export const site = {
         price: "Optional · subscription or one-time, on the App Store",
       },
       {
-        item: "Agent usage (Claude · Codex · Antigravity)",
+        item: "Agent usage (Claude · Codex · Antigravity · Copilot)",
         price: "Billed by each provider — never through us",
       },
     ],

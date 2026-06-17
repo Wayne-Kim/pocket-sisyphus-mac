@@ -61,7 +61,8 @@
       // Two shapes:
       //   "<id>"            → pocketsisyphus://session/<id>   (legacy bare session id)
       //   "<route>[/<id>]"  → pocketsisyphus://<route>[/<id>] (route-prefixed, e.g.
-      //                       "backlog" / "backlog/<briefId>" for PO brief alerts)
+      //                       "backlog" / "backlog/<briefId>" for PO brief alerts,
+      //                       "workflow/<runId>" for workflow run-canvas alerts)
       function readFragment() {
         var h = (location.hash || "").replace(/^#/, "");
         if (h) return h;
@@ -85,7 +86,7 @@
         return;
       }
 
-      var ROUTES = { session: 1, backlog: 1 };
+      var ROUTES = { session: 1, backlog: 1, workflow: 1 };
       var target;
       if (ROUTES[first]) {
         target = "pocketsisyphus://" + first + (second ? "/" + encodeURIComponent(second) : "");
